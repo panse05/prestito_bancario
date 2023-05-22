@@ -54,7 +54,7 @@ namespace prestito_bancario
             Console.WriteLine("Inserire il codice fiscale del cliente desiderato: ");
             string codfis = Console.ReadLine();
 
-            int dd = 0;
+            int numPres = 0;
 
             //se il codice fiscale inserito è nullo non ti restituisce niente e ti avvisa del fatto che hai inserito un codice non valido
             if(codfis == "") 
@@ -64,26 +64,27 @@ namespace prestito_bancario
             }
             else //funzionerà se e solo se il codice fiscale inserito è valido 
             {
-                List<Prestito> prestiti = b1.SearchPrestiti(codfis);
+                List<Prestito> prestiti = b1.SearchPrestiti(codfis); //ti crea una lista chiamata prestiti contenente i prestiti fatti da un determinato codice fiscale
                 Console.WriteLine("");
 
-                foreach (Prestito p in prestiti)
+                foreach (Prestito p in prestiti) //per ogni prestito in questa lista 
                 {
-                    Console.WriteLine(p.ToString());
-                    Console.WriteLine("-------------------------------");
-                    dd = dd + 1;
-                    Console.ReadKey();
+                    Console.WriteLine(p.ToString()); //richiama la funzione ToString
+                    Console.WriteLine("-------------------------------"); 
+                    numPres = numPres + 1; //contatore che aumenta per ogni presito associato 
+                    Console.ReadKey(); 
                 }
 
-                if(dd == 0)
+                if(numPres == 0) //se il contatore è uguale a 0 significa che non ha trovato nessun prestito con associato il codice fiscale inserito
                 {
                     Console.WriteLine("Il codice inserito non ha avuto risultati");
                     Console.ReadKey();
                 }
-                else if (dd > 0)
+                else if (numPres > 0) //se invece il numero è maggiore di 0 significa che c'è almeno un prestito
                 {
-                    double tot = b1.TotalePrestiti(codfis);
-                    Console.WriteLine("Importo totale: " + tot.ToString() + " euro");
+                    double tot = b1.TotalePrestiti(codfis); //richiamando il metodo "TotalePrestiti" avremo una variabile con assegnata la sommatoria degli importi dei prestiti
+                    Console.WriteLine("Numero prestiti: " + numPres); //quanti prestiti sono stati fatti da un cliente
+                    Console.WriteLine("Importo totale: " + tot.ToString() + " euro"); //ammontare totale
                     Console.ReadKey();
                 }
 

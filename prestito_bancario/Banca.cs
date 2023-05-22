@@ -40,6 +40,7 @@ namespace prestito_bancario
             set { _prestiti = value; }
         }
 
+        //metodi
         public void AddCliente(Cliente Cliente)
         {
             this.Clienti.Add(Cliente);
@@ -52,15 +53,7 @@ namespace prestito_bancario
         {
             this.Clienti.RemoveAll(x => x.CodiceFiscale == CodiceFiscale);
         }
-        
-        /*public Cliente SearchCliente(string CodiceFiscale)
-        {
-            return this.Clienti.Find(x => x.CodiceFiscale == CodiceFiscale);
-        }
-        public List<Prestito> GetPrestitiCliente(string CodiceFiscale)
-        {
-            return this.Prestiti.FindAll(p => p.Intestatario.CodiceFiscale == CodiceFiscale);
-        }*/
+              
 
         public void AddPrestito(Prestito Prestito)
         {
