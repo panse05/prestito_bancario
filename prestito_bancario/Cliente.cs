@@ -8,13 +8,13 @@ namespace prestito_bancario
 {
     public class Cliente
     {
+        //attributi
         private string _nome;
         private string _cognome;
         private string _codiceFiscale;
         private double _stipendio;
         
-        public Cliente() { }
-
+        //costruttore
         public Cliente(string Nome, string Cognome, string CodiceFiscale, double Stipendio)
         {
             this.Nome = Nome;
@@ -23,6 +23,7 @@ namespace prestito_bancario
             this.Stipendio = Stipendio;
         }
 
+        //properties
         public string Nome 
         {
             get { return _nome; }

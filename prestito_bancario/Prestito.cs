@@ -8,12 +8,14 @@ namespace prestito_bancario
 {
     public class Prestito
     {
+        //attributi
         private double _importo;
         private double _interesse;
         private DateTime _dataInizio;
         private DateTime _dataFine;
         private Cliente _intestatario;
 
+        //costruttore
         public Prestito(double Importo, double Interesse, DateTime DataInizio, DateTime DataFine, Cliente Intestatario)
         {
             this.Importo = Importo;
@@ -23,6 +25,7 @@ namespace prestito_bancario
             this.Intestatario = Intestatario;
         }
 
+        //properties
         public double Importo 
         {
             get { return _importo; }
@@ -64,9 +67,9 @@ namespace prestito_bancario
 
         
 
-        public override string ToString()
+        public override string ToString() //serve per stampare a video una serie di dati 
         {
-            return $"Importo: {Importo}, Interesse: {Interesse}, Data inizio: {DataInizio.ToShortDateString()}, Data fine: {DataFine.ToShortDateString()}, Cliente: {Intestatario.Nome} {Intestatario.Cognome}";
+            return $"Importo: {Importo}, Interesse: {Interesse}, Data inizio: {DataInizio.ToShortDateString()}, Data fine: {DataFine.ToShortDateString()}, Cliente: {Intestatario.Nome} {Intestatario.Cognome}"; 
         }
     }
 }

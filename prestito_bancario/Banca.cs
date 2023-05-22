@@ -8,10 +8,12 @@ namespace prestito_bancario
 {
     public class Banca
     {
+        //attributi
         private string _nome;
         private List<Cliente> _clienti;
         private List<Prestito> _prestiti;
 
+        //costruttore
         public Banca(string Nome)
         {
             this.Nome = Nome;
@@ -19,6 +21,7 @@ namespace prestito_bancario
             this.Prestiti = new List<Prestito>();
         }
 
+        //properties
         public string Nome 
         {
             get { return _nome; }
@@ -50,48 +53,53 @@ namespace prestito_bancario
             this.Clienti.RemoveAll(x => x.CodiceFiscale == CodiceFiscale);
         }
         
-        public Cliente SearchCliente(string CodiceFiscale)
+        /*public Cliente SearchCliente(string CodiceFiscale)
         {
             return this.Clienti.Find(x => x.CodiceFiscale == CodiceFiscale);
         }
         public List<Prestito> GetPrestitiCliente(string CodiceFiscale)
         {
             return this.Prestiti.FindAll(p => p.Intestatario.CodiceFiscale == CodiceFiscale);
-        }
+        }*/
 
         public void AddPrestito(Prestito Prestito)
         {
             this.Prestiti.Add(Prestito);
         }
 
-        public double TotalePrestiti(string CodiceFiscale)
+        public void RemovePrestito(Prestito Prestito)
         {
-            double totale = 0;
+            this.Prestiti.Add(Prestito);
+        }
 
-            foreach (Prestito prestito in Prestiti)
+        public double TotalePrestiti(string CodiceFiscale) //datoci il codice fiscale 
+        {
+            double totale = 0; //creiamo la variabile del totale
+
+            foreach (Prestito prestito in Prestiti) //per ogni prestito salvato nella banca 
             {
-                if (prestito.Intestatario.CodiceFiscale ==CodiceFiscale)
+                if (prestito.Intestatario.CodiceFiscale ==CodiceFiscale) //se il codice fiscale corrisponde
                 {
-                    totale += prestito.Importo;
+                    totale += prestito.Importo; //va a sommare tutti gli importi associati a quel codice
                 }
             }
 
-            return totale;
+            return totale; //mi ritorna il totale
         }
 
         public List<Prestito> SearchPrestiti(string CodiceFiscale)
         {
-            List<Prestito> risultati = new List<Prestito>();
+            List<Prestito> risultati = new List<Prestito>(); //crea una nuova lista di prestiti chiamata "risultati" 
 
-            foreach (Prestito prestito in Prestiti)
+            foreach (Prestito prestito in Prestiti) //per ogni prestito salvato nella banca 
             {
-                if (prestito.Intestatario.CodiceFiscale == CodiceFiscale)
+                if (prestito.Intestatario.CodiceFiscale == CodiceFiscale) //controlla in tutti se il codice fiscale corrisponde 
                 {
-                    risultati.Add(prestito);
+                    risultati.Add(prestito); //se sì, mi aggiunge questo prestito nella lista risultati 
                 }
             }
 
-            return risultati;
+            return risultati; //mi ritorna la lista
         }
 
         
