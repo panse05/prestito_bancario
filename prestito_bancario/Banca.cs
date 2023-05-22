@@ -37,29 +37,19 @@ namespace prestito_bancario
             set { _prestiti = value; }
         }
 
-        public void AddPrestito(Prestito Prestito)
-        {
-            this.Prestiti.Add(Prestito);
-        }
-
-        public double TotalePrestiti(string CodiceFiscale)
-        {
-            return this.Prestiti.FindAll(p => p.Intestatario.CodiceFiscale == CodiceFiscale).Sum(p => p.Ammontare);
-        }
-
-        public List<Prestito> SearchPrestiti(string CodiceFiscale)
-        {
-            return this.Prestiti.FindAll(p => p.Intestatario.CodiceFiscale == CodiceFiscale);
-        }
-
         public void AddCliente(Cliente Cliente)
         {
             this.Clienti.Add(Cliente);
         }
-        public void RemoveCliente(string CodiceFiscale)
+        public void RemoveCliente(Cliente Cliente)
+        {
+            this.Clienti.Remove(Cliente);
+        }
+        public void RemoveClienteCod(string CodiceFiscale)
         {
             this.Clienti.RemoveAll(x => x.CodiceFiscale == CodiceFiscale);
         }
+        
         public Cliente SearchCliente(string CodiceFiscale)
         {
             return this.Clienti.Find(x => x.CodiceFiscale == CodiceFiscale);
@@ -68,5 +58,42 @@ namespace prestito_bancario
         {
             return this.Prestiti.FindAll(p => p.Intestatario.CodiceFiscale == CodiceFiscale);
         }
+
+        public void AddPrestito(Prestito Prestito)
+        {
+            this.Prestiti.Add(Prestito);
+        }
+
+        public double TotalePrestiti(string CodiceFiscale)
+        {
+            double totale = 0;
+
+            foreach (Prestito prestito in Prestiti)
+            {
+                if (prestito.Intestatario.CodiceFiscale ==CodiceFiscale)
+                {
+                    totale += prestito.Importo;
+                }
+            }
+
+            return totale;
+        }
+
+        public List<Prestito> SearchPrestiti(string CodiceFiscale)
+        {
+            List<Prestito> risultati = new List<Prestito>();
+
+            foreach (Prestito prestito in Prestiti)
+            {
+                if (prestito.Intestatario.CodiceFiscale == CodiceFiscale)
+                {
+                    risultati.Add(prestito);
+                }
+            }
+
+            return risultati;
+        }
+
+        
     }
 }

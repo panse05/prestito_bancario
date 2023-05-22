@@ -8,33 +8,33 @@ namespace prestito_bancario
 {
     public class Prestito
     {
-        private double _ammontare;
-        private double _rata;
+        private double _importo;
+        private double _interesse;
         private DateTime _dataInizio;
         private DateTime _dataFine;
-        private Cliente _intestario;
+        private Cliente _intestatario;
 
-        public Prestito(double Ammontare, double Rata, DateTime DataInizio, DateTime DataFine, Cliente Intestatario)
+        public Prestito(double Importo, double Interesse, DateTime DataInizio, DateTime DataFine, Cliente Intestatario)
         {
-            this.Ammontare = Ammontare;
-            this.Rata = Rata;
+            this.Importo = Importo;
+            this.Interesse = Interesse;
             this.DataInizio = DataInizio;
             this.DataFine = DataFine;
             this.Intestatario = Intestatario;
         }
 
-        public double Ammontare 
+        public double Importo 
         {
-            get { return _ammontare; }
-            set { _ammontare = value; }
+            get { return _importo; }
+            set { _importo = value; }
         }
 
-        public double Rata
+        public double Interesse
         {
-            get { return _rata; }
+            get { return _interesse; }
             set
             {
-                _rata = value;
+                _interesse = value;
             }
         }
 
@@ -58,18 +58,15 @@ namespace prestito_bancario
 
         public Cliente Intestatario 
         {
-            get { return _intestario; }
-            set { _intestario = value; }
+            get { return _intestatario; }
+            set { _intestatario = value; }
         }
 
-        /*public override string ToString()
+        
+
+        public override string ToString()
         {
-            return string.Format("Ammontare: {0}\nRata: {1}\nDataInizio: {2}\nDataFine: {3}\nIntestatario:\n{4}",
-                                   this.Ammontare,
-                                   this.Rata,
-                                   this.DataInizio,
-                                   this.DataFine,
-                                   this.Intestatario.ToString());
-        }*/
+            return $"Importo: {Importo}, Interesse: {Interesse}, Data inizio: {DataInizio.ToShortDateString()}, Data fine: {DataFine.ToShortDateString()}, Cliente: {Intestatario.Nome} {Intestatario.Cognome}";
+        }
     }
 }

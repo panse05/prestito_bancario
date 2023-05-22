@@ -48,13 +48,6 @@ namespace prestito_bancario
         }
 
 
-        /*public override string ToString()
-        {
-            return string.Format("Nome: {0}\nCognome: {1}\nCodiceFiscale: {2}\nStipendio: {3}",
-                                   this.Nome,
-                                   this.Cognome,
-                                   this.CodiceFiscale,
-                                   this.Stipendio);
-        }*/
+        
     }
 }
